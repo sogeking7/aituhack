@@ -34,6 +34,24 @@ services:
     networks:
       - strapi-network
 
+  express:
+    container_name: express
+    build:
+      context: ./express
+      dockerfile: dev.Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./express:/app
+      - /app/node_modules # Prevents container node_modules from being overwritten
+    ports:
+      - "8080:8080"
+    networks:
+      - strapi-network
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - strapi
+
 volumes:
   strapi-data:
 
