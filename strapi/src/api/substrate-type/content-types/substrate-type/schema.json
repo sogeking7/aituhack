@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "substrate_types",
+  "info": {
+    "singularName": "substrate-type",
+    "pluralName": "substrate-types",
+    "displayName": "SubstrateType",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "tips": {
+      "type": "richtext"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

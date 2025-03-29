@@ -34,6 +34,22 @@ services:
     networks:
       - strapi-network
 
+  express:
+    container_name: express
+    build:
+      context: ./express
+      dockerfile: prod.Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - strapi-network
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - strapi
+
+
 volumes:
   strapi-data:
 

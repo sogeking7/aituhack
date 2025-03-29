@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gardens",
+  "info": {
+    "singularName": "garden",
+    "pluralName": "gardens",
+    "displayName": "Garden",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "microgreen": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::microgreen.microgreen",
+      "inversedBy": "gardens"
+    },
+    "seeding_date": {
+      "type": "date"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "gardens"
+    }
+  }
+}

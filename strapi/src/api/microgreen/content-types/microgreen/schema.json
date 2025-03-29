@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "microgreens",
+  "info": {
+    "singularName": "microgreen",
+    "pluralName": "microgreens",
+    "displayName": "Microgreen",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "scientific_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "optimal_temperature": {
+      "type": "json"
+    },
+    "optimal_humidity": {
+      "type": "json"
+    },
+    "average_growth_time": {
+      "type": "json"
+    },
+    "light_requirements": {
+      "type": "json"
+    },
+    "watering_frequency": {
+      "type": "json"
+    },
+    "difficulty_level": {
+      "type": "integer",
+      "max": 10,
+      "min": 1,
+      "required": true
+    },
+    "tips": {
+      "type": "richtext"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "gardens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::garden.garden",
+      "mappedBy": "microgreen"
+    }
+  }
+}
