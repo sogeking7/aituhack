@@ -1,0 +1,43 @@
+version: "3"
+services:
+  strapi:
+    container_name: strapi
+    build:
+      context: ./strapi
+      dockerfile: prod.Dockerfile
+    image: strapi:latest
+    restart: unless-stopped
+    env_file: ./strapi/.env
+    volumes:
+      - ./strapi/config:/opt/app/config
+      - ./strapi/src:/opt/app/src
+      - ./strapi/package.json:/opt/package.json
+      - ./strapi/.env:/opt/app/.env
+      - ./strapi/public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi-network
+    depends_on:
+      - strapiDB
+
+  strapiDB:
+    container_name: strapiDB
+    platform: linux/amd64
+    restart: unless-stopped
+    env_file: ./strapi/.env
+    image: postgres:12.0-alpine
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    networks:
+      - strapi-network
+
+volumes:
+  strapi-data:
+
+networks:
+  strapi-network:
+    name: Strapi
+    driver: bridge
