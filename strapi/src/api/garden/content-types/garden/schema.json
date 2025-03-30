@@ -29,6 +29,26 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "gardens"
+    },
+    "substrate_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::substrate-type.substrate-type"
+    },
+    "estimated_remaining_days": {
+      "type": "biginteger",
+      "required": false
+    },
+    "journals": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::journal.journal"
+    },
+    "commentary": {
+      "type": "text"
+    },
+    "notification": {
+      "type": "json"
     }
   }
 }

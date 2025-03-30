@@ -73,17 +73,18 @@
       "type": "string",
       "required": true
     },
-    "notifications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::notification.notification",
-      "mappedBy": "users_permissions_user"
-    },
     "gardens": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::garden.garden",
       "mappedBy": "user"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

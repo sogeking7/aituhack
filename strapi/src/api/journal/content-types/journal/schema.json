@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "journals",
+  "info": {
+    "singularName": "journal",
+    "pluralName": "journals",
+    "displayName": "Journal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "date": {
+      "required": true,
+      "type": "date"
+    },
+    "notes": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "humidity": {
+      "type": "json"
+    },
+    "height": {
+      "type": "json"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
