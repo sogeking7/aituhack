@@ -47,12 +47,12 @@
       "type": "richtext"
     },
     "image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     },
     "gardens": {
       "type": "relation",
