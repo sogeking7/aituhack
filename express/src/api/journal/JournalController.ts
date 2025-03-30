@@ -37,20 +37,6 @@ class JournalController {
     return handleServiceResponse(serviceResponse, res)
   }
 
-  public getJournalsByGarden: RequestHandler = async (
-    req: Request,
-    res: Response
-  ) => {
-    const gardenId = parseInt(req.params.gardenId)
-
-    if (isNaN(gardenId)) {
-      return res.status(400).json({ error: "Invalid garden ID" })
-    }
-
-    const serviceResponse = await journalService.getByGardenId(gardenId)
-    return handleServiceResponse(serviceResponse, res)
-  }
-
   public uploadAndLinkImageMiddleware = upload.single("image")
   public uploadAndLinkImageHandler: RequestHandler = async (
     req: Request,

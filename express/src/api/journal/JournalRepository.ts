@@ -44,22 +44,4 @@ export class JournalRepository {
       })
     }
   }
-
-  async getByGardenIdAsync(gardenId: number): Promise<any> {
-    try {
-      const response = await axios.get(
-        `${STRAPI_BASE_URL}/journals?filters[garden]=${gardenId}&sort=date:desc`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      return response.data
-    } catch (error: any) {
-      throw new Error(error.response.data.error.message, {
-        cause: error.response.data,
-      })
-    }
-  }
 }

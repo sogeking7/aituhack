@@ -30,22 +30,6 @@ export class JournalService {
     }
   }
 
-  async getByGardenId(gardenId: number): Promise<ServiceResponse<any>> {
-    try {
-      const journals = await this.journalRepository.getByGardenIdAsync(gardenId)
-
-      return ServiceResponse.success("Journal entries retrieved", journals)
-    } catch (ex: any) {
-      const { message, cause } = ex
-      logger.error("Error retrieving journal entries:", ex)
-
-      return ServiceResponse.failure(
-        message,
-        cause,
-        cause?.error?.status || StatusCodes.INTERNAL_SERVER_ERROR
-      )
-    }
-  }
 }
 
 export const journalService = new JournalService()

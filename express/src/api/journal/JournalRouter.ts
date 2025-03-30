@@ -1,4 +1,3 @@
-// src/journal/JournalRouter.ts
 import express, { type Router } from "express"
 import { OpenAPIRegistry } from "@asteasolutions/zod-to-openapi"
 import { z } from "zod"
@@ -13,7 +12,6 @@ export const journalRouter: Router = express.Router()
 
 journalRegistry.register("Journal", JournalSchema)
 
-// Create journal entry
 journalRegistry.registerPath({
   method: "post",
   path: "/journals",
@@ -31,21 +29,6 @@ journalRegistry.registerPath({
   responses: createApiResponse(JournalSchema, "Success"),
 })
 
-// Get journal entries by garden ID
-journalRegistry.registerPath({
-  method: "get",
-  path: "/journals/garden/{gardenId}",
-  tags: ["Journal"],
-  summary: "Get Journal Entries by Garden ID",
-  request: {
-    params: z.object({
-      gardenId: z.string().describe("Garden ID"),
-    }),
-  },
-  responses: createApiResponse(z.array(JournalSchema), "Success"),
-})
-
-// Upload and link image to journal entry
 journalRegistry.registerPath({
   method: "post",
   path: "/journals/{journalId}/image",
@@ -88,7 +71,6 @@ journalRegistry.registerPath({
 })
 
 journalRouter.post("/", journalController.createJournal)
-journalRouter.get("/garden/:gardenId", journalController.getJournalsByGarden)
 
 journalRouter.post(
   "/:journalId/image",
